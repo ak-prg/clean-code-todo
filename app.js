@@ -104,14 +104,11 @@ const toggleTaskStatus = function () {
   else incompleteTaskHolder.appendChild(listItem);
 };
 
-const ajaxRequest = function () {};
-
 //The glue to hold it all together.
 
 //Set the click handler to the addTask function.
 addButton.onclick = addTask;
 addButton.addEventListener('click', addTask);
-addButton.addEventListener('click', ajaxRequest);
 
 const bindTaskEvents = function (taskListItem) {
   //select ListItems children
