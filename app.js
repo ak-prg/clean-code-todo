@@ -60,7 +60,7 @@ const addTask = function () {
 
   //Append listItem to incompleteTaskHolder
   incompleteTaskHolder.appendChild(listItem);
-  bindTaskEvents(listItem);
+  addListeners(listItem);
 
   taskInput.value = '';
 };
@@ -109,7 +109,7 @@ const toggleTaskStatus = function () {
 //Set the click handler to the addTask function.
 addButton.addEventListener('click', addTask);
 
-const bindTaskEvents = function (taskListItem) {
+const addListeners = function (taskListItem) {
   //select ListItems children
   const checkBox = taskListItem.querySelector('input[type=checkbox]');
   const editButton = taskListItem.querySelector('button.edit');
@@ -127,13 +127,13 @@ const bindTaskEvents = function (taskListItem) {
 //for each list item
 for (let i = 0; i < incompleteTaskHolder.children.length; i++) {
   //bind events to list items chldren(tasksCompleted)
-  bindTaskEvents(incompleteTaskHolder.children[i]);
+  addListeners(incompleteTaskHolder.children[i]);
 }
 
 //cycle over completedTasksHolder ul list items
 for (let i = 0; i < completedTasksHolder.children.length; i++) {
   //bind events to list items chldren(tasksIncompleted)
-  bindTaskEvents(completedTasksHolder.children[i]);
+  addListeners(completedTasksHolder.children[i]);
 }
 
 // Issues with usability don't get seen until they are in front of a human tester.
