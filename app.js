@@ -1,9 +1,9 @@
-const taskInput = document.getElementById('new-task');
+const newTaskInput = document.getElementById('new-task');
 const addButton = document.getElementById('add-button');
-const incompleteTaskHolder = document.getElementById('incompleteTasks');
-const completedTasksHolder = document.getElementById('completed-tasks');
+const incompleteTaskList = document.getElementById('incompleteTasks');
+const completedTaskList = document.getElementById('completed-tasks');
 
-const createNewTaskElement = function (taskString) {
+const createNewTaskElement = function (taskContent) {
   const listItem = document.createElement('li');
   const checkBox = document.createElement('input');
   const label = document.createElement('label');
@@ -12,8 +12,8 @@ const createNewTaskElement = function (taskString) {
   const deleteButton = document.createElement('button');
   const deleteButtonImg = document.createElement('img');
 
-  //innerText encodes special characters, HTML does not
-  label.innerText = taskString;
+  // Assign as text, not innerHTML: user input must never be parsed as HTML
+  label.innerText = taskContent;
   label.className = 'task';
 
   checkBox.type = 'checkbox';
@@ -37,22 +37,22 @@ const createNewTaskElement = function (taskString) {
 };
 
 const addTask = function () {
-  if (!taskInput.value) return;
-  const listItem = createNewTaskElement(taskInput.value);
+  if (!newTaskInput.value) return;
+  const listItem = createNewTaskElement(newTaskInput.value);
 
-  incompleteTaskHolder.appendChild(listItem);
+  incompleteTaskList.appendChild(listItem);
   addListeners(listItem);
 
-  taskInput.value = '';
+  newTaskInput.value = '';
 };
 
 const editTask = function () {
   const listItem = this.parentNode;
   const editInput = listItem.querySelector('input[type=text]');
   const label = listItem.querySelector('label');
-  const containsClass = listItem.classList.contains('editMode');
+  const isInEditMode = listItem.classList.contains('editMode');
 
-  if (containsClass) {
+  if (isInEditMode) {
     label.innerText = editInput.value;
     this.innerText = 'Edit';
   } else {
@@ -73,22 +73,22 @@ const deleteTask = function () {
 const toggleTaskStatus = function () {
   const listItem = this.parentNode;
 
-  if (this.checked) completedTasksHolder.appendChild(listItem);
-  else incompleteTaskHolder.appendChild(listItem);
+  if (this.checked) completedTaskList.appendChild(listItem);
+  else incompleteTaskList.appendChild(listItem);
 };
 
 addButton.addEventListener('click', addTask);
 
-const addListeners = function (taskListItem) {
-  const checkBox = taskListItem.querySelector('input[type=checkbox]');
-  const editButton = taskListItem.querySelector('button.edit');
-  const deleteButton = taskListItem.querySelector('button.delete');
+const addListeners = function (listItem) {
+  const checkBox = listItem.querySelector('input[type=checkbox]');
+  const editButton = listItem.querySelector('button.edit');
+  const deleteButton = listItem.querySelector('button.delete');
 
   editButton.addEventListener('click', editTask);
   deleteButton.addEventListener('click', deleteTask);
   checkBox.addEventListener('change', toggleTaskStatus);
 };
 
-[...incompleteTaskHolder.children, ...completedTasksHolder.children].forEach(
+[...incompleteTaskList.children, ...completedTaskList.children].forEach(
   addListeners
 );
