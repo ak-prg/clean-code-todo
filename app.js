@@ -107,7 +107,6 @@ const toggleTaskStatus = function () {
 //The glue to hold it all together.
 
 //Set the click handler to the addTask function.
-addButton.onclick = addTask;
 addButton.addEventListener('click', addTask);
 
 const bindTaskEvents = function (taskListItem) {
@@ -117,11 +116,11 @@ const bindTaskEvents = function (taskListItem) {
   const deleteButton = taskListItem.querySelector('button.delete');
 
   //Bind editTask to edit button.
-  editButton.onclick = editTask;
+  editButton.addEventListener('click', editTask);
   //Bind deleteTask to delete button.
-  deleteButton.onclick = deleteTask;
+  deleteButton.addEventListener('click', deleteTask);
   //Bind taskCompleted to checkBoxEventHandler.
-  checkBox.onchange = toggleTaskStatus;
+  checkBox.addEventListener('change', toggleTaskStatus);
 };
 
 //cycle over incompleteTaskHolder ul list items
