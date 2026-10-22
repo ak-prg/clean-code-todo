@@ -89,10 +89,6 @@ const addListeners = function (taskListItem) {
   checkBox.addEventListener('change', toggleTaskStatus);
 };
 
-for (let i = 0; i < incompleteTaskHolder.children.length; i++) {
-  addListeners(incompleteTaskHolder.children[i]);
-}
-
-for (let i = 0; i < completedTasksHolder.children.length; i++) {
-  addListeners(completedTasksHolder.children[i]);
-}
+[...incompleteTaskHolder.children, ...completedTasksHolder.children].forEach(
+  addListeners
+);
