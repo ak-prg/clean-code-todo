@@ -17,6 +17,7 @@ const createNewTaskElement = function (taskContent) {
   label.className = 'task';
 
   checkBox.type = 'checkbox';
+
   editInput.type = 'text';
   editInput.className = 'task';
 
@@ -77,8 +78,6 @@ const toggleTaskStatus = function () {
   else incompleteTaskList.appendChild(listItem);
 };
 
-addButton.addEventListener('click', addTask);
-
 const addListeners = function (listItem) {
   const checkBox = listItem.querySelector('input[type=checkbox]');
   const editButton = listItem.querySelector('button.edit');
@@ -88,6 +87,8 @@ const addListeners = function (listItem) {
   deleteButton.addEventListener('click', deleteTask);
   checkBox.addEventListener('change', toggleTaskStatus);
 };
+
+addButton.addEventListener('click', addTask);
 
 [...incompleteTaskList.children, ...completedTaskList.children].forEach(
   addListeners
