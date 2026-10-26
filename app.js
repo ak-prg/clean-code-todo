@@ -66,9 +66,7 @@ const editTask = function () {
 
 const deleteTask = function () {
   const listItem = this.closest('li');
-  const ul = listItem.parentNode;
-
-  ul.removeChild(listItem);
+  listItem.remove();
 };
 
 const toggleTaskStatus = function () {
