@@ -1,4 +1,4 @@
-const newTaskInput = document.getElementById('new-task');
+const newTaskInput = document.getElementById('task-new');
 const addButton = document.getElementById('add-button');
 const incompleteTaskList = document.getElementById('incomplete-tasks');
 const completedTaskList = document.getElementById('completed-tasks');
@@ -14,12 +14,12 @@ const createNewTaskElement = function (taskContent) {
 
   // Assign as text, not innerHTML: user input must never be parsed as HTML
   label.innerText = taskContent;
-  label.className = 'task';
+  label.className = 'task-label';
 
   checkBox.type = 'checkbox';
 
   editInput.type = 'text';
-  editInput.className = 'task';
+  editInput.className = 'edit-task-input';
 
   editButton.innerText = 'Edit';
   editButton.className = 'edit';
@@ -51,7 +51,7 @@ const editTask = function () {
   const listItem = this.parentNode;
   const editInput = listItem.querySelector('input[type=text]');
   const label = listItem.querySelector('label');
-  const isInEditMode = listItem.classList.contains('editMode');
+  const isInEditMode = listItem.classList.contains('edit-mode');
 
   if (isInEditMode) {
     label.innerText = editInput.value;
@@ -61,7 +61,7 @@ const editTask = function () {
     this.innerText = 'Save';
   }
 
-  listItem.classList.toggle('editMode');
+  listItem.classList.toggle('edit-mode');
 };
 
 const deleteTask = function () {
