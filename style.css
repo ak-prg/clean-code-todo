@@ -74,7 +74,7 @@ button:hover {
 
 /* Heading */
 h3,
-label[for='new-task'] {
+label[for='task-new'] {
   color: #333;
   font-weight: 700;
   font-size: 15px;
@@ -109,7 +109,7 @@ input[type='text']:focus {
   margin: 16px 0px;
 }
 
-label[for='new-task'] {
+label[for='task-new'] {
   display: block;
   margin: 0 0 20px;
 }
@@ -159,11 +159,11 @@ button.delete img:hover {
   display: none;
 }
 
-.editMode .edit-task-input {
+.edit-mode .edit-task-input {
   display: inline-block;
   width: 224px;
 }
 
-.editMode .task-label {
+.edit-mode .task-label {
   display: none;
 }
