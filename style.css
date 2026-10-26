@@ -129,10 +129,6 @@ li {
   align-items: center;
 }
 
-li > * {
-  vertical-align: middle;
-}
-
 li > input[type='checkbox'] {
   margin: 0 10px;
 }
