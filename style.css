@@ -27,7 +27,9 @@ body {
   width: 500px;
   margin: 0 auto 0;
 }
-.task {
+.task-label,
+.new-task-input,
+.edit-task-input {
   width: 56%;
   display: inline-block;
   flex-grow: 1;
